@@ -31,7 +31,7 @@ Copy and paste script from link above into file; save and close.
 1. go to the repo and click the Fork button. It's now in your account.
 2. `git clone git@github.com:clayford/benford.git` (example repo)
 NOTE: If you're only interested in making a fork of the project and not contributing back to the original project, you can stop here.
-3. `cd` into new repo and add a Git remote that points back to the original repository (your copy of the one you forked):  
+3. `cd` into new repo and add a Git remote that points back to the original repository (**NOT** your copy of the one you forked, but the **ORIGINAL** repo):  
 `git remote add upstream https://github.com/jfccoolbeans/benford.git`
 NOTE: assuming that your goal is to issue a pull request to have your changes merged back into the original project, you'll need to use a branch.
 4. create a new branch: `git checkout -b <new branch name>`
