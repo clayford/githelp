@@ -14,11 +14,11 @@ See current configuration:
 https://help.github.com/articles/generating-ssh-keys/   
 NOTE: on Win 7, use `eval $(ssh-agent -s)`   
 
-## Setting up Git so you don’t have to password every time you push to GitHub
+## Setting up Git so you don't have to password every time you push to GitHub
 
 https://help.github.com/articles/working-with-ssh-key-passphrases/   
 
-NOTE: may have to create .profile file. Use `ls –a` to see if .profile exists in root directory. If not:   
+NOTE: may have to create .profile file. Use `ls -a` to see if .profile exists in root directory. If not:   
 `touch .profile`   
 
 Copy and paste script from link above into file; save and close.
@@ -28,23 +28,23 @@ Copy and paste script from link above into file; save and close.
 `git reset .`   
 
 ## How to fork and sync a repo 
-1. go to the repo and click the Fork button. It’s now in your account.
+1. go to the repo and click the Fork button. It's now in your account.
 2. `git clone git@github.com:clayford/benford.git` (example repo)
-NOTE: If you’re only interested in making a fork of the project and not contributing back to the original project, you can stop here.
+NOTE: If you're only interested in making a fork of the project and not contributing back to the original project, you can stop here.
 3. `cd` into new repo and add a Git remote that points back to the original repository (the one you FORKED):
 `git remote add upstream https://github.com/jfccoolbeans/benford.git`
-NOTE: assuming that your goal is to issue a pull request to have your changes merged back into the original project, you’ll need to use a branch.
+NOTE: assuming that your goal is to issue a pull request to have your changes merged back into the original project, you'll need to use a branch.
 4. create a new branch: `git checkout -b <new branch name>`
 5. Push changes back up to GitHub: `git push origin <new branch name>`
 6. Open a pull request: click Compare & Pull Request button and click Create Pull Request button
 7. The person approving the pull request needs to click the Merge Pull Request button
 8. Fetch from upstream repo: `git fetch upstream` (may need to wait for GitHub to catch up)
-9. Check out your fork’s local master branch: `git checkout master`
+9. Check out your fork's local master branch: `git checkout master`
 10. merge changes from upstream/master into the local master branch: `git merge upstream/master`
 11. delete the feature branch (because the changes are already in the master branch): `git branch -d <new branch name>`
 12. update the master branch in your forked repository: `git push origin master`
 13. push the deletion of the feature branch to your GitHub repository: `git push --delete origin <new branch name>`
-NOTE: your forked repository doesn’t automatically stay in sync with the original repository. To keep your fork in sync with the original repository, use these commands:
+NOTE: your forked repository doesn't automatically stay in sync with the original repository. To keep your fork in sync with the original repository, use these commands:
 
 `git pull upstream master`  
 `git push origin master`  
