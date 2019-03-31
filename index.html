@@ -10,9 +10,9 @@
 <h2><a id="ssh_keys__generate_12"></a>ssh keys - generate</h2>
 <p><a href="https://help.github.com/articles/generating-ssh-keys/">https://help.github.com/articles/generating-ssh-keys/</a><br>
 NOTE: on Win 7, use <code>eval $(ssh-agent -s)</code></p>
-<h2><a id="Setting_up_Git_so_you_don_have_to_password_every_time_you_push_to_GitHub_16"></a>Setting up Git so you donӴ have to password every time you push to GitHub</h2>
+<h2><a id="Setting_up_Git_so_you_dont_have_to_password_every_time_you_push_to_GitHub_16"></a>Setting up Git so you don’t have to password every time you push to GitHub</h2>
 <p><a href="https://help.github.com/articles/working-with-ssh-key-passphrases/">https://help.github.com/articles/working-with-ssh-key-passphrases/</a></p>
-<p>NOTE: may have to create .profile file. Use <code>ls ס</code> to see if .profile exists in root directory. If not:<br>
+<p>NOTE: may have to create .profile file. Use <code>ls -a</code> to see if .profile exists in root directory. If not:<br>
 <code>touch .profile</code></p>
 <p>Copy and paste script from link above into file; save and close.</p>
 <h2><a id="unstage_files_ie_you_added_files_for_commit_but_now_want_to_undo_25"></a>unstage files (ie, you added files for commit but now want to undo)</h2>
@@ -20,23 +20,23 @@ NOTE: on Win 7, use <code>eval $(ssh-agent -s)</code></p>
 <code>git reset .</code></p>
 <h2><a id="How_to_fork_and_sync_a_repo_29"></a>How to fork and sync a repo</h2>
 <ol>
-<li>go to the repo and click the Fork button. Itӳ now in your account.</li>
+<li>go to the repo and click the Fork button. It’s now in your account.</li>
 <li><code>git clone git@github.com:clayford/benford.git</code> (example repo)<br>
-NOTE: If youӲe only interested in making a fork of the project and not contributing back to the original project, you can stop here.</li>
+NOTE: If you’re only interested in making a fork of the project and not contributing back to the original project, you can stop here.</li>
 <li><code>cd</code> into new repo and add a Git remote that points back to the original repository (the one you FORKED):<br>
 <code>git remote add upstream https://github.com/jfccoolbeans/benford.git</code><br>
-NOTE: assuming that your goal is to issue a pull request to have your changes merged back into the original project, youӬl need to use a branch.</li>
+NOTE: assuming that your goal is to issue a pull request to have your changes merged back into the original project, you’ll need to use a branch.</li>
 <li>create a new branch: <code>git checkout -b &lt;new branch name&gt;</code></li>
 <li>Push changes back up to GitHub: <code>git push origin &lt;new branch name&gt;</code></li>
 <li>Open a pull request: click Compare &amp; Pull Request button and click Create Pull Request button</li>
 <li>The person approving the pull request needs to click the Merge Pull Request button</li>
 <li>Fetch from upstream repo: <code>git fetch upstream</code> (may need to wait for GitHub to catch up)</li>
-<li>Check out your forkӳ local master branch: <code>git checkout master</code></li>
+<li>Check out your fork’s local master branch: <code>git checkout master</code></li>
 <li>merge changes from upstream/master into the local master branch: <code>git merge upstream/master</code></li>
 <li>delete the feature branch (because the changes are already in the master branch): <code>git branch -d &lt;new branch name&gt;</code></li>
 <li>update the master branch in your forked repository: <code>git push origin master</code></li>
 <li>push the deletion of the feature branch to your GitHub repository: <code>git push --delete origin &lt;new branch name&gt;</code><br>
-NOTE: your forked repository doesnӴ automatically stay in sync with the original repository. To keep your fork in sync with the original repository, use these commands:</li>
+NOTE: your forked repository doesn’t automatically stay in sync with the original repository. To keep your fork in sync with the original repository, use these commands:</li>
 </ol>
 <p><code>git pull upstream master</code><br>
 <code>git push origin master</code></p>
