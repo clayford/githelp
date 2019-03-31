@@ -8,23 +8,26 @@ https://help.github.com/articles/set-up-git/
 `git config --global user.email "YOUR EMAIL ADDRESS"`   
 
 See current configuration:  
-`git config --list  
+`git config --list`  
 
 ## ssh keys - generate
-https://help.github.com/articles/generating-ssh-keys/
-NOTE: on Win 7, use eval $(ssh-agent -s)
+https://help.github.com/articles/generating-ssh-keys/   
+NOTE: on Win 7, use `eval $(ssh-agent -s)`   
 
 ## Setting up Git so you don’t have to password every time you push to GitHub
-https://help.github.com/articles/working-with-ssh-key-passphrases/
-NOTE: may have to create .profile file. Use ls –a to see if .profile exists in root directory. If not:
-`touch .profile`
+
+https://help.github.com/articles/working-with-ssh-key-passphrases/   
+
+NOTE: may have to create .profile file. Use `ls –a` to see if .profile exists in root directory. If not:   
+`touch .profile`   
+
 Copy and paste script from link above into file; save and close.
 
 ## unstage files (ie, you added files for commit but now want to undo)
-`git reset [file]`
-`git reset .`
+`git reset [file]`   
+`git reset .`   
 
-How to fork and sync a repo 
+## How to fork and sync a repo 
 1. go to the repo and click the Fork button. It’s now in your account.
 2. `git clone git@github.com:clayford/benford.git` (example repo)
 NOTE: If you’re only interested in making a fork of the project and not contributing back to the original project, you can stop here.
@@ -43,32 +46,36 @@ NOTE: assuming that your goal is to issue a pull request to have your changes me
 13. push the deletion of the feature branch to your GitHub repository: `git push --delete origin <new branch name>`
 NOTE: your forked repository doesn’t automatically stay in sync with the original repository. To keep your fork in sync with the original repository, use these commands:
 
-`git pull upstream master`
-`git push origin master`
+`git pull upstream master`  
+`git push origin master`  
 
 See also: https://www.gun.io/blog/how-to-github-fork-branch-and-pull-request 
 
 ## Undo all edits and restore previous commit
+
 `git reset --hard HEAD`
 
 ## Syncing a fork
-Sync a fork of a repository to keep it up-to-date with the upstream repository.
-https://help.github.com/articles/syncing-a-fork/
-`git fetch upstream`
-`git checkout master`
-`git merge upstream/master`
+
+Sync a fork of a repository to keep it up-to-date with the upstream repository.   
+https://help.github.com/articles/syncing-a-fork/    
+`git fetch upstream`   
+`git checkout master`    
+`git merge upstream/master`   
 
 ## Forgot to create a new branch
+
 https://www.mikeplate.com/2012/04/21/rewind-master-if-you-forgot-to-create-new-branch-in-git/
 
 ## How do I re-stage files?
-People often save their work every few minutes when they're using a desktop text editor. Similarly, it's common to use git add periodically to save the most recent changes to a file to the staging area. This is particularly useful when the changes are experimental and you might want to undo them without cluttering up the repository's history.
+use `git add` periodically to save the most recent changes to a file to the staging area. This is particularly useful when the changes are experimental and you might want to undo them without cluttering up the repository's history.
 
 ## How can I undo changes to unstaged files?
 
 Suppose you have made changes to a file, then decide you want to undo them. Your text editor may be able to do this, but a more reliable way is to let Git do the work. The command:
 
-`git checkout -- filename`
+`git checkout -- filename`   
+
 will discard the changes that have not yet been staged. (The double dash `--` must be there to separate the git checkout command from the names of the file or files you want to recover.)
 
 Use this command carefully: once you discard changes in this way, they are gone forever.
