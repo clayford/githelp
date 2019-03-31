@@ -1,6 +1,6 @@
 ﻿# GitHub Cheat Sheet
 
-Notes for myself about using Git and GitHub. Some notes below are from DataCamp's Git course.
+Notes for myself about using Git and GitHub. Some notes below are from [DataCamp's Git course](https://www.datacamp.com/courses/introduction-to-git-for-data-science).
 
 ## Setting up Git
 https://help.github.com/articles/set-up-git/  
@@ -31,7 +31,7 @@ Copy and paste script from link above into file; save and close.
 1. go to the repo and click the Fork button. It's now in your account.
 2. `git clone git@github.com:clayford/benford.git` (example repo)
 NOTE: If you're only interested in making a fork of the project and not contributing back to the original project, you can stop here.
-3. `cd` into new repo and add a Git remote that points back to the original repository (the one you FORKED):
+3. `cd` into new repo and add a Git remote that points back to the original repository (your copy of the one you forked):  
 `git remote add upstream https://github.com/jfccoolbeans/benford.git`
 NOTE: assuming that your goal is to issue a pull request to have your changes merged back into the original project, you'll need to use a branch.
 4. create a new branch: `git checkout -b <new branch name>`
