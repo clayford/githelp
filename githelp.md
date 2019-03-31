@@ -3,11 +3,12 @@
 Notes for myself about using Git and GitHub. Some notes below are from DataCamp's Git course.
 
 ## Setting up Git
-https://help.github.com/articles/set-up-git/
-`git config --global user.name "YOUR NAME"`
-`git config --global user.email "YOUR EMAIL ADDRESS"`
-See current configuration:
-`git config --list
+https://help.github.com/articles/set-up-git/  
+`git config --global user.name "YOUR NAME"`   
+`git config --global user.email "YOUR EMAIL ADDRESS"`   
+
+See current configuration:  
+`git config --list  
 
 ## ssh keys - generate
 https://help.github.com/articles/generating-ssh-keys/
