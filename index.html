@@ -1,0 +1,139 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>GitHub Cheat Sheet.md</title><style></style></head><body id="preview">
+<h1><a id="GitHub_Cheat_Sheet_0"></a>GitHub Cheat Sheet</h1>
+<p>Notes for myself about using Git and GitHub. Some notes below are from DataCamp’s Git course.</p>
+<h2><a id="Setting_up_Git_4"></a>Setting up Git</h2>
+<p><a href="https://help.github.com/articles/set-up-git/">https://help.github.com/articles/set-up-git/</a><br>
+<code>git config --global user.name &quot;YOUR NAME&quot;</code><br>
+<code>git config --global user.email &quot;YOUR EMAIL ADDRESS&quot;</code></p>
+<p>See current configuration:<br>
+<code>git config --list</code></p>
+<h2><a id="ssh_keys__generate_12"></a>ssh keys - generate</h2>
+<p><a href="https://help.github.com/articles/generating-ssh-keys/">https://help.github.com/articles/generating-ssh-keys/</a><br>
+NOTE: on Win 7, use <code>eval $(ssh-agent -s)</code></p>
+<h2><a id="Setting_up_Git_so_you_dont_have_to_password_every_time_you_push_to_GitHub_16"></a>Setting up Git so you don’t have to password every time you push to GitHub</h2>
+<p><a href="https://help.github.com/articles/working-with-ssh-key-passphrases/">https://help.github.com/articles/working-with-ssh-key-passphrases/</a></p>
+<p>NOTE: may have to create .profile file. Use <code>ls –a</code> to see if .profile exists in root directory. If not:<br>
+<code>touch .profile</code></p>
+<p>Copy and paste script from link above into file; save and close.</p>
+<h2><a id="unstage_files_ie_you_added_files_for_commit_but_now_want_to_undo_25"></a>unstage files (ie, you added files for commit but now want to undo)</h2>
+<p><code>git reset [file]</code><br>
+<code>git reset .</code></p>
+<h2><a id="How_to_fork_and_sync_a_repo_29"></a>How to fork and sync a repo</h2>
+<ol>
+<li>go to the repo and click the Fork button. It’s now in your account.</li>
+<li><code>git clone git@github.com:clayford/benford.git</code> (example repo)<br>
+NOTE: If you’re only interested in making a fork of the project and not contributing back to the original project, you can stop here.</li>
+<li><code>cd</code> into new repo and add a Git remote that points back to the original repository (the one you FORKED):<br>
+<code>git remote add upstream https://github.com/jfccoolbeans/benford.git</code><br>
+NOTE: assuming that your goal is to issue a pull request to have your changes merged back into the original project, you’ll need to use a branch.</li>
+<li>create a new branch: <code>git checkout -b &lt;new branch name&gt;</code></li>
+<li>Push changes back up to GitHub: <code>git push origin &lt;new branch name&gt;</code></li>
+<li>Open a pull request: click Compare &amp; Pull Request button and click Create Pull Request button</li>
+<li>The person approving the pull request needs to click the Merge Pull Request button</li>
+<li>Fetch from upstream repo: <code>git fetch upstream</code> (may need to wait for GitHub to catch up)</li>
+<li>Check out your fork’s local master branch: <code>git checkout master</code></li>
+<li>merge changes from upstream/master into the local master branch: <code>git merge upstream/master</code></li>
+<li>delete the feature branch (because the changes are already in the master branch): <code>git branch -d &lt;new branch name&gt;</code></li>
+<li>update the master branch in your forked repository: <code>git push origin master</code></li>
+<li>push the deletion of the feature branch to your GitHub repository: <code>git push --delete origin &lt;new branch name&gt;</code><br>
+NOTE: your forked repository doesn’t automatically stay in sync with the original repository. To keep your fork in sync with the original repository, use these commands:</li>
+</ol>
+<p><code>git pull upstream master</code><br>
+<code>git push origin master</code></p>
+<p>See also: <a href="https://www.gun.io/blog/how-to-github-fork-branch-and-pull-request">https://www.gun.io/blog/how-to-github-fork-branch-and-pull-request</a></p>
+<h2><a id="Undo_all_edits_and_restore_previous_commit_53"></a>Undo all edits and restore previous commit</h2>
+<p><code>git reset --hard HEAD</code></p>
+<h2><a id="Syncing_a_fork_57"></a>Syncing a fork</h2>
+<p>Sync a fork of a repository to keep it up-to-date with the upstream repository.<br>
+<a href="https://help.github.com/articles/syncing-a-fork/">https://help.github.com/articles/syncing-a-fork/</a><br>
+<code>git fetch upstream</code><br>
+<code>git checkout master</code><br>
+<code>git merge upstream/master</code></p>
+<h2><a id="Forgot_to_create_a_new_branch_65"></a>Forgot to create a new branch</h2>
+<p><a href="https://www.mikeplate.com/2012/04/21/rewind-master-if-you-forgot-to-create-new-branch-in-git/">https://www.mikeplate.com/2012/04/21/rewind-master-if-you-forgot-to-create-new-branch-in-git/</a></p>
+<h2><a id="How_do_I_restage_files_69"></a>How do I re-stage files?</h2>
+<p>use <code>git add</code> periodically to save the most recent changes to a file to the staging area. This is particularly useful when the changes are experimental and you might want to undo them without cluttering up the repository’s history.</p>
+<h2><a id="How_can_I_undo_changes_to_unstaged_files_72"></a>How can I undo changes to unstaged files?</h2>
+<p>Suppose you have made changes to a file, then decide you want to undo them. Your text editor may be able to do this, but a more reliable way is to let Git do the work. The command:</p>
+<p><code>git checkout -- filename</code></p>
+<p>will discard the changes that have not yet been staged. (The double dash <code>--</code> must be there to separate the git checkout command from the names of the file or files you want to recover.)</p>
+<p>Use this command carefully: once you discard changes in this way, they are gone forever.</p>
+<h2><a id="How_can_I_unstage_a_file_that_I_have_staged_82"></a>How can I unstage a file that I have staged?</h2>
+<p><code>git checkout -- filename</code> will undo changes that have not yet been staged. If you want to undo changes that have been staged, you can use <code>git reset HEAD filename</code>. This does not restore the file to the state it was in before you started making changes. Instead, it resets the file to the state you last staged. If you want to go all the way back to where you were before you started making changes, you must <code>git checkout -- filename</code> as well.</p>
+<h2><a id="How_do_I_restore_an_old_version_of_a_file_86"></a>How do I restore an old version of a file?</h2>
+<p>Since Git stores old versions of your files, you can use it to restore those files when you want to undo changes. The command for doing this is git checkout, which takes two arguments: the hash that identifies the version you want to restore, and the name of the file. For example, if git log shows this:</p>
+<pre><code>commit ab8883e8a6bfa873d44616a0f356125dbaccd9ea
+Author: Author: Rep Loop &lt;repl@datacamp.com&gt;
+Date:   Thu Oct 19 09:37:48 2017 -0400
+
+    Adding graph to show latest quarterly results.
+
+commit 2242bd761bbeafb9fc82e33aa5dad966adfe5409
+Author: Author: Rep Loop &lt;repl@datacamp.com&gt;
+Date:   Thu Oct 16 09:17:37 2017 -0400
+
+    Modifying the bibliography format.
+</code></pre>
+<p>then <code>git checkout 2242bd report.txt</code> would replace report.txt with whatever was committed on October 16.</p>
+<p>Restoring a file doesn’t erase any of the repository’s history. Instead, the act of restoring the file is saved as another commit, because you might later want to undo your undoing.</p>
+<h2><a id="How_can_I_undo_all_of_the_changes_I_have_made_108"></a>How can I undo all of the changes I have made?</h2>
+<p>So far, you have seen how to undo changes to a single file at a time. You will sometimes want to undo changes to many files. One way to do this is to give git reset and git checkout a directory as an argument rather than the names of one or more files. For example, <code>git reset HEAD data</code> will unstage any files from the data directory that you have staged, and <code>git checkout -- data</code> will then restore those files to their previous state.</p>
+<h2><a id="How_can_I_see_what_branches_my_repository_has_112"></a>How can I see what branches my repository has?</h2>
+<p>By default, every Git repository has a branch called master. To list all of the branches in a repository: <code>git branch</code>. The branch you are currently in will be shown with a * beside its name.</p>
+<h2><a id="How_can_I_view_the_differences_between_branches_116"></a>How can I view the differences between branches?</h2>
+<p>Branches and revisions are closely connected, and commands that work on the latter usually work on the former. For example, just as <code>git diff revision-1..revision-2</code> shows the difference between two versions of a repository, <code>git diff branch-1..branch-2</code> shows the difference between two branches.</p>
+<h2><a id="How_can_I_switch_from_one_branch_to_another_120"></a>How can I switch from one branch to another?</h2>
+<p>When you run <code>git branch</code>, it puts a * beside the name of the branch you are currently in. To switch to another branch, you use <code>git checkout branch-name</code>.</p>
+<p>Note: Git will only let you do this if all of your changes have been committed.</p>
+<h2><a id="How_can_I_create_a_branch_126"></a>How can I create a branch?</h2>
+<p>The easiest way to create a new branch is to run <code>git checkout -b branch-name</code>, which creates the branch and switches you to it. The contents of the new branch are initially identical to the contents of the original. Once you start making changes, they only affect the new branch.</p>
+<h2><a id="How_can_I_merge_two_branches_130"></a>How can I merge two branches?</h2>
+<p>Branching lets you create parallel universes; merging is how you bring them back together. When you merge one branch (call it the source) into another (call it the destination), Git incorporates the changes made to the source branch into the destination branch. If those changes don’t overlap, the result is a new commit in the destination branch that includes everything from the source branch. (The next exercises describes what happens if there are conflicts.)</p>
+<p>To merge two branches, run <code>git merge source destination</code> (without … between the two branch names). Git automatically opens an editor so that you can write a log message for the merge; you can either keep its default message or fill in something more informative.</p>
+<h2><a id="What_are_conflicts_135"></a>What are conflicts?</h2>
+<p>Sometimes the changes in two branches will conflict with each other: for example, bug fixes might touch the same lines of code, or analyses in two different branches may both append new (and different) records to a summary data file. In this case, Git relies on you to reconcile the conflicting changes.</p>
+<h2><a id="How_can_I_merge_two_branches_with_conflicts_139"></a>How can I merge two branches with conflicts?</h2>
+<p>When there is a conflict during a merge, Git tells you that there’s a problem, and running git status after the merge reminds you which files have conflicts that you need to resolve by printing both modified: beside the files’ names.</p>
+<p>Inside the file, Git leaves markers that look like this to tell you where the conflicts occurred:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; destination-branch-name
+...changes from the destination branch...
+=======
+...changes from the source branch...
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; source-branch-name
+(In many cases, the destination branch name will be HEAD, because you will be merging into the current branch.) To resolve the conflict, edit the file to remove the markers and make whatever other changes are needed to reconcile the changes, then commit those changes.
+</code></pre>
+<h2><a id="How_can_I_create_a_brand_new_repository_153"></a>How can I create a brand new repository?</h2>
+<p><code>git init project-name</code>, where “project-name” is the name you want the new repository’s root directory to have.</p>
+<h2><a id="How_can_I_turn_an_existing_project_into_a_Git_repository_157"></a>How can I turn an existing project into a Git repository?</h2>
+<p>run <code>git init</code> in the project’s root directory, or <code>git init /path/to/project</code> from anywhere else on your computer.</p>
+<h2><a id="How_can_I_create_a_copy_of_an_existing_repository_161"></a>How can I create a copy of an existing repository?</h2>
+<p>Sometimes you will join a project that is already running, inherit a project from someone else, or continue working on one of your own projects on a new machine. In each case, you will clone an existing repository instead of creating a new one. Cloning a repository does exactly what the name suggests: it creates a copy of an existing repository (including all of its history) in a new directory.</p>
+<p>To clone a repository, use the command <code>git clone URL</code>, where URL identifies the repository you want to clone. This will normally be something like <a href="https://github.com/datacamp/project.git">https://github.com/datacamp/project.git</a></p>
+<p>When you clone a repository, Git uses the name of the existing repository as the name of the clone’s root directory.</p>
+<h2><a id="How_can_I_find_out_where_a_cloned_repository_originated_169"></a>How can I find out where a cloned repository originated?</h2>
+<p>When you a clone a repository, Git remembers where the original repository was. It does this by storing a remote in the new repository’s configuration. A remote is like a browser bookmark with a name and a URL. If you are in a repository, you can list the names of its remotes using <code>git remote</code>.</p>
+<p>If you want more information, you can use <code>git remote -v</code> (for “verbose”), which shows the remote’s URLs. Note that “URLs” is plural: it’s possible for a remote to have several URLs associated with it for different purposes, though in practice each remote is almost always paired with just one URL.</p>
+<h2><a id="How_can_I_define_remotes_174"></a>How can I define remotes?</h2>
+<p>When you clone a repository, Git automatically creates a remote called <code>origin</code> that points to the original repository. You can add more remotes using:</p>
+<p><code>git remote add remote-name URL</code></p>
+<p>and remove existing ones using:</p>
+<p><code>git remote rm remote-name</code></p>
+<p>You can connect any two Git repositories this way, but in practice, you will almost always connect repositories that share some common ancestry.</p>
+<h2><a id="How_can_I_pull_in_changes_from_a_remote_repository_186"></a>How can I pull in changes from a remote repository?</h2>
+<p><code>git pull remote branch</code> gets everything in branch in the remote repository identified by remote and merges it into the current branch of your local repository. For example, if you are in the quarterly-report branch of your local repository, the command:</p>
+<p><code>git pull thunk latest-analysis</code></p>
+<p>would get changes from latest-analysis branch in the repository associated with the remote called thunk and merge them into your quarterly-report branch.</p>
+<h2><a id="What_happens_if_I_try_to_pull_when_I_have_unsaved_changes_194"></a>What happens if I try to pull when I have unsaved changes?</h2>
+<p>Just as Git stops you from switching branches when you have unsaved work, it also stops you from pulling in changes from a remote repository when doing so might overwrite things you have done locally. The fix is simple: either commit your local changes or revert them, and then try to pull again.</p>
+<h2><a id="How_can_I_push_my_changes_to_a_remote_repository_198"></a>How can I push my changes to a remote repository?</h2>
+<p>The complement of git pull is git push, which pushes the changes you have made locally into a remote repository. The most common way to use it is:</p>
+<p><code>git push remote-name branch-name</code></p>
+<p>which pushes the contents of your branch branch-name into a branch with the same name in the remote repository associated with remote-name. It’s possible to use different branch names at your end and the remote’s end, but doing this quickly becomes confusing: it’s almost always better to use the same names for branches across repositories.</p>
+<h2><a id="What_happens_if_my_push_conflicts_with_someone_elses_work_206"></a>What happens if my push conflicts with someone else’s work?</h2>
+<p>Overwriting your own work by accident is bad; overwriting someone else’s is worse. To prevent this happening, Git does not allow you to push changes to a remote repository unless you have merged the contents of the remote repository into your own work.</p>
+<h2><a id="How_to_undo_a_commit_210"></a>How to undo a commit?</h2>
+<p><code>git reset HEAD~</code></p>
+<h2><a id="How_to_delete_a_remote_213"></a>How to delete a remote?</h2>
+<p><code>git remote rm &lt;name of remote&gt;</code></p>
+
+</body></html>
