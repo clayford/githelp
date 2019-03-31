@@ -148,8 +148,10 @@ Inside the file, Git leaves markers that look like this to tell you where the co
 =======
 ...changes from the source branch...
 >>>>>>> source-branch-name
-(In many cases, the destination branch name will be HEAD, because you will be merging into the current branch.) To resolve the conflict, edit the file to remove the markers and make whatever other changes are needed to reconcile the changes, then commit those changes.
 ```
+
+(In many cases, the destination branch name will be HEAD, because you will be merging into the current branch.) To resolve the conflict, edit the file to remove the markers and make whatever other changes are needed to reconcile the changes, then commit those changes.
+
 
 ## How can I create a brand new repository?
 
@@ -214,4 +216,10 @@ Overwriting your own work by accident is bad; overwriting someone else's is wors
 ## How to delete a remote?
 `git remote rm <name of remote>`
 
+## How to create a project page for a repo
 
+This is what I use: https://help.github.com/en/articles/creating-project-pages-using-the-command-line 
+
+## How to convert md file to html: 
+
+This is what I use for single conversions: https://dillinger.io/  
