@@ -1,4 +1,4 @@
-# GitHub Cheat Sheet
+﻿# GitHub Cheat Sheet
 
 Notes for myself about using Git and GitHub. Some notes below are from DataCamp's Git course.
 
