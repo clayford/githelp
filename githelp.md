@@ -223,3 +223,28 @@ This is what I use: https://help.github.com/en/articles/creating-project-pages-u
 ## How to convert md file to html: 
 
 This is what I use for single conversions: https://dillinger.io/  
+
+## How to Check Out and Test Pull Requests [source](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
+
+Open up the .git/config file and add a new line under [remote "origin"]:
+
+`fetch = +refs/pull/*/head:refs/pull/origin/*`
+
+Now you can fetch and checkout any pull request so that you can test them:
+
+```
+# Fetch all pull request branches
+git fetch origin
+
+# Checkout out a given pull request branch based on its number
+git checkout -b 999 pull/origin/999
+
+```
+
+Keep in mind that these branches will be read only and you won't be able to push any changes.
+
+You can automatically do the merge by just clicking the button on the pull request page on GitHub
+
+Now that you're done with the development branch, you're free to delete it.
+
+`git branch -d newfeature`
