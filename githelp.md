@@ -250,10 +250,26 @@ Now that you're done with the development branch, you're free to delete it.
 `git branch -d newfeature`
 
 ## How to see branches on GitHub
-
 `git branch -r`
 
 ## How to fetch branches from GitHub (ie, branches you don't have locally)
+https://stackoverflow.com/questions/1783405/how-do-i-check-out-a-remote-git-branch
 
-`git fetch origin main:<branch_name>`
+## fetch all branches
+`git fetch --all`
+
+## see branches available for checkout
+`git branch -v -a`
+
+## switch to branch
+`git switch new_branch`
+
+## merge branch
+`git checkout main`
+`git merge new_branch`
+
+Fix conflicts in files
+`git add .`
+`git commit -m 'message'`
+
 
