@@ -248,3 +248,12 @@ You can automatically do the merge by just clicking the button on the pull reque
 Now that you're done with the development branch, you're free to delete it.
 
 `git branch -d newfeature`
+
+## How to see branches on GitHub
+
+`git branch -r`
+
+## How to fetch branches from GitHub (ie, branches you don't have locally)
+
+`git fetch origin main:<branch_name>`
+
