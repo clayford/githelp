@@ -264,6 +264,12 @@ https://stackoverflow.com/questions/1783405/how-do-i-check-out-a-remote-git-bran
 ## switch to branch
 `git switch new_branch`
 
+## delete branch
+`git branch -d old_branch`
+
+## delete branch on remote host
+`git push -d origin old_branch`
+
 ## merge branch
 `git checkout main`
 `git merge new_branch`
