@@ -72,17 +72,13 @@ use `git add` periodically to save the most recent changes to a file to the stag
 
 ## How can I undo changes to unstaged files?
 
-Suppose you have made changes to a file, then decide you want to undo them. Your text editor may be able to do this, but a more reliable way is to let Git do the work. The command:
+Suppose you have made changes to a file, then decide you want to undo them. Your text editor may be able to do this, but a more reliable way is to let Git do the work. 
 
-`git checkout -- filename`   
-
-will discard the changes that have not yet been staged. (The double dash `--` must be there to separate the git checkout command from the names of the file or files you want to recover.)
-
-Use this command carefully: once you discard changes in this way, they are gone forever.
+`git restore [filename]`   
 
 ## How can I unstage a file that I have staged?
 
-`git checkout -- filename` will undo changes that have not yet been staged. If you want to undo changes that have been staged, you can use `git reset HEAD filename`. This does not restore the file to the state it was in before you started making changes. Instead, it resets the file to the state you last staged. If you want to go all the way back to where you were before you started making changes, you must `git checkout -- filename` as well.
+`git restore --staged [filename]` 
 
 ## How do I restore an old version of a file?
 
@@ -293,3 +289,18 @@ Keep the file on your hard drive but not have Git track it anymore.
 ## rename file
 `git mv [current_file_name] [new_file_name]`   
 `git commit -m 'message about name change'`
+
+## redo a commit
+You commit too early and possibly forget to add some files, or you mess up your commit message.
+
+```
+git commit -m 'Initial commit'
+git add forgotten_file
+git commit --amend
+```
+
+update commit message in editor that opens.
+
+
+
+
