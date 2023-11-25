@@ -271,11 +271,21 @@ https://stackoverflow.com/questions/1783405/how-do-i-check-out-a-remote-git-bran
 `git push -d origin old_branch`
 
 ## merge branch
-`git checkout main`
+`git checkout main`   
 `git merge new_branch`
 
 Fix conflicts in files
-`git add .`
+`git add .`  
 `git commit -m 'message'`
 
+## remove file from Git
+To remove a file from Git, you have to remove it from your tracked files and then commit. This deletes the file from disk.
 
+`git rm [file]`   
+`git commit -m 'message about removal'`
+
+## remove file from Git but keep on disk
+Keep the file on your hard drive but not have Git track it anymore.
+
+`git rm --cached [file]`    
+`git commit -m 'message about not tracking'`
