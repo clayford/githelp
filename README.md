@@ -289,3 +289,7 @@ Keep the file on your hard drive but not have Git track it anymore.
 
 `git rm --cached [file]`    
 `git commit -m 'message about not tracking'`
+
+## rename file
+`git mv [current_file_name] [new_file_name]`   
+`git commit -m 'message about name change'`
